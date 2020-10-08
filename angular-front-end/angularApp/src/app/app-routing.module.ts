@@ -10,7 +10,7 @@ import { DeleteComponent } from './display/delete/delete.component';
 
 const routes: Routes = [
   {
-    path:"edit/:id/:field/:fname",
+    path:"edit/:id",
     component:EditComponent
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     component:DisplayComponent
   },
   {
-    path:"delete/:id/:field",
+    path:"delete/:id",
     component:DeleteComponent
   },
   {

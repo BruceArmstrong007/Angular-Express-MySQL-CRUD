@@ -7,10 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class DeleteService {
   constructor(private http : HttpClient) { }
 
-  getdata(id,field){
+  getdata(id){
     return this.http.post<any>('http://localhost:3000/delete',{
-      id:id,
-      field:field
+      id:id
     });
   }
 }

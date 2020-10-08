@@ -34,9 +34,9 @@ export class CreateComponent implements OnInit {
   postData(form : NgForm){
   console.log(form.value);
     this.create.getdata(form).subscribe(data => {
+      window.alert(data.message);
       if(data.success){
-        window.alert("Successfully Created");
-        this.route.navigate['/'];
+        this.route.navigate(['/']);
       }
     });
   }

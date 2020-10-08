@@ -10,41 +10,29 @@ import { NgForm } from '@angular/forms'
 })
 export class EditComponent implements OnInit {
   id : Number;
-  field : String;
-  fname : String;
-  name : String;
+  row : String[];
+  date : Date;
   constructor(private route: ActivatedRoute,private router : Router,private edit : EditService) { }
 
   ngOnInit(): void {
+    let d: Date = new Date();
+    d.setFullYear(d.getFullYear() - 18);
+    this.date = d;
     this.route.params.subscribe(data => {
         this.id = data.id;
-        this.field = data.field;
-        this.fname = data.fname;
-        switch(this.fname){
-           case 'driverName': this.name = 'Driver Name' ;
-           break;
-           case 'license': this.name = 'License Number' ;
-           break;
-           case 'aadhar': this.name = 'Aadhar Number' ;
-           break;
-           case 'dob': this.name = 'Date of Birth' ;
-           break;
-           case 'vehicleNo': this.name = 'Vehicle Number' ;
-           break;
-           case 'salary': this.name = 'Salary' ;
-           break;
-        }
-    });
+        this.edit.getData(this.id).subscribe(data => {
+         this.row = data.row[0];
+        });
+
+   });
   }
 
   postData(form : NgForm){
-    form.value.rowId = this.id;
-    form.value.updateField = this.fname;
-       this.edit.getdata(form).subscribe(data => {
+       this.edit.setData(form).subscribe(data => {
+        window.alert(data.message);
             if(data.success){
               window.alert("Successfully Updated");
-            }else{
-              window.alert(data.message);
+              this.router.navigate(['/']);
             }
        });
   }

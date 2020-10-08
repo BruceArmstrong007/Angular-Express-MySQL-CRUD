@@ -17,12 +17,10 @@ export class DeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(data => {
-      this.del.getdata(data.id,data.field).subscribe(data => {
+      this.del.getdata(data.id).subscribe(data => {
+      window.alert(data.message);
       if(data.success){
-        window.alert("Successfully Deleted");
         this.router.navigate(['/']);
-      }else{
-        window.alert(data.message);
       }
       });
     });

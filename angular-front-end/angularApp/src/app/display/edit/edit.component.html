@@ -1,34 +1,41 @@
+
 <mat-card>
   <mat-card-content>
     <a mat-raised-button [routerLink]="['/']" routerLinkActive="router-link-active" >Back</a>
     <hr>
-
-   <form (submit)="postData(postForm)" #postForm="ngForm">
     <h1>Edit User</h1>
+   <form (submit)="postData(postForm)" #postForm="ngForm">
     <mat-form-field>
-      <label>
-        {{ name }}
-      </label>
-    </mat-form-field>
+      <input matInput type="number" [ngModel]="row.id" placeholder="ID:" #id="ngModel" id="id" name="id" min="3" max="45" ngModel readonly>
+     </mat-form-field>
     <mat-form-field>
-      <label>
-        {{ field }}
-      </label>
+     <input matInput type="text" [ngModel]="row.driverName" placeholder="Driver Name:" #driverName="ngModel" id="driverName" name="driverName" minlength="3" maxlength="45" ngModel required>
+     <mat-error *ngIf="driverName.invalid">Please enter Valid Name</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <label>
-        Edit :
-      </label>
+      <input matInput type="text" [ngModel]="row.license" placeholder="License Number:" #license="ngModel" id="license" name="license" minlength="10" maxlength="10" ngModel required>
+      <mat-error *ngIf="license.invalid">Enter Valid License Number</mat-error>
+     </mat-form-field>
+    <mat-form-field>
+     <input matInput type="number" [ngModel]="row.aadhar" placeholder="Aadhar Card:" #aadhar="ngModel" name="aadhar" min="12" max="12" ngModel required>
+     <mat-error *ngIf="aadhar.invalid">Enter Valid Aadhar Card</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <input matInput type="text" [placeholder]="name" id="edit" #edit="ngModel" [name]="fname" ngModel required>
-    <mat-error *ngIf="edit.invalid">Enter Valid {{ name }}</mat-error>
+    <mat-form-field>
+     <input matInput type="date" placeholder="Date of Birth:"
+     [ngModel]="row.dob | date:'yyyy-MM-dd'" [max]="date | date:'yyyy-MM-dd'" (ngModelChange)="date = $event"   #dob="ngModel" id="dob" name="dob" ngModel required>
+     <mat-error *ngIf="dob.invalid">Enter Valid Date of Birth</mat-error>
     </mat-form-field>
-    <input type="hidden" #updateField="ngModel" [value]="fname" name="updateField" ngModel>
-    <input type="hidden" #rowId="ngModel" [value]="id" name="rowId" ngModel>
+    <mat-form-field>
+      <input matInput type="number" [ngModel]="row.vehicleNo" placeholder="Vehicle Number:" #vehicleNo="ngModel" name="vehicleNo" ngModel required>
+      <mat-error *ngIf="vehicleNo.invalid">Enter Valid Vehicle Number</mat-error>
+     </mat-form-field>
+     <mat-form-field>
+      <input matInput type="number" [ngModel]="row.salary" placeholder="Salary:" #salary="ngModel" name="salary" ngModel required>
+      <mat-error *ngIf="salary.invalid">Enter Valid Salary</mat-error>
+     </mat-form-field>
     <hr>
-      <button mat-raised-button color="primary" id="submit" type="submit">Edit</button>
+      <button mat-raised-button color="primary" id="submit" type="submit">Submit</button>
    </form>
   </mat-card-content>
 </mat-card>
-<h3>{{ name }}{{ fname }}{{ id }}{{ field }}</h3>
+
