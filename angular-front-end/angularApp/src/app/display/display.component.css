@@ -1,0 +1,11 @@
+table{
+  margin-top: 4%;
+ margin-left: 4%;
+}
+td{
+  min-width: 10vh;
+}
+#col{
+  background-color: rgb(59, 59, 248);
+  color:white;
+}

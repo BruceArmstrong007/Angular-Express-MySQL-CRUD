@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-content>
+    <a mat-raised-button [routerLink]="['/']" routerLinkActive="router-link-active" >Back</a>
+    <hr>
+
+   <form (submit)="postData(postForm)" #postForm="ngForm">
+    <h1>Edit User</h1>
+    <mat-form-field>
+      <label>
+        {{ name }}
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <label>
+        {{ field }}
+      </label>
+    </mat-form-field>
+    <mat-form-field>
+      <label>
+        Edit :
+      </label>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input matInput type="text" [placeholder]="name" id="edit" #edit="ngModel" [name]="fname" ngModel required>
+    <mat-error *ngIf="edit.invalid">Enter Valid {{ name }}</mat-error>
+    </mat-form-field>
+    <input type="hidden" #updateField="ngModel" [value]="fname" name="updateField" ngModel>
+    <input type="hidden" #rowId="ngModel" [value]="id" name="rowId" ngModel>
+    <hr>
+      <button mat-raised-button color="primary" id="submit" type="submit">Edit</button>
+   </form>
+  </mat-card-content>
+</mat-card>
+<h3>{{ name }}{{ fname }}{{ id }}{{ field }}</h3>

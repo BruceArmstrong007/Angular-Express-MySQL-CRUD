@@ -1,0 +1,60 @@
+<a mat-raised-button [routerLink]="['/create']" routerLinkActive="router-link-active" >Add User</a>
+<hr>
+<mat-card [style.overflow]="'auto'" [style.height.%]="'90'" [style.width.%]="'100'">
+  <table>
+    <tr id="col">
+      <th>ID</th>
+      <th colspan="3">Driver Name</th>
+      <th colspan="3">License</th>
+      <th colspan="3">Aadhar Card</th>
+      <th colspan="3">Date of Birth</th>
+      <th colspan="3">Vehicle Number</th>
+      <th colspan="3">Salary</th>
+    </tr>
+    <tr *ngFor="let i of rows">
+      <td> {{ i.id }} </td>
+      <td>  {{ i.driverName }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.driverName,'driverName']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'driverName']" routerLinkActive="router-link-active" >Delete</a>
+      </td>
+      <td> {{ i.license }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.license,'license']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'license']" routerLinkActive="router-link-active" >Delete</a>
+      </td>
+      <td> {{ i.aadhar }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.aadhar,'aadhar']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'aadhar']" routerLinkActive="router-link-active" >Delete</a>
+    </td>
+      <td> {{ i.dob | date: 'dd-MM-yyyy' }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.dob,'dob']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'dob']" routerLinkActive="router-link-active" >Delete</a>
+    </td>
+      <td> {{ i.vehicleNo }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.vehicleNo,'vehicleNo']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'vehicleNo']" routerLinkActive="router-link-active" >Delete</a>
+    </td>
+      <td> {{ i.salary }} </td>
+      <td>
+      <a mat-raised-button color="success" [routerLink]="['/edit/',i.id,i.salary,'salary']" routerLinkActive="router-link-active" >Edit</a>
+    </td>
+    <td>
+      <a mat-raised-button color="warn" [routerLink]="['/delete/',i.id,'salary']" routerLinkActive="router-link-active" >Delete</a>
+      </td>
+  </tr>
+  </table>
+</mat-card>

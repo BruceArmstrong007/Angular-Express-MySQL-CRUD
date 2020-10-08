@@ -1,0 +1,38 @@
+
+<mat-card>
+  <mat-card-content>
+    <a mat-raised-button [routerLink]="['/']" routerLinkActive="router-link-active" >Back</a>
+    <hr>
+    <h1>Add User</h1>
+   <form (submit)="postData(postForm)" #postForm="ngForm">
+    <mat-form-field>
+     <input matInput type="text" placeholder="Driver Name:" #driverName="ngModel" id="driverName" name="driverName" minlength="3" maxlength="45" ngModel required>
+     <mat-error *ngIf="driverName.invalid">Please enter Valid Name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="License Number:" #license="ngModel" id="license" name="license" minlength="10" maxlength="10" ngModel required>
+      <mat-error *ngIf="license.invalid">Enter Valid License Number</mat-error>
+     </mat-form-field>
+    <mat-form-field>
+     <input matInput type="number" placeholder="Aadhar Card:" #aadhar="ngModel" name="aadhar" min="12" max="12" ngModel required>
+     <mat-error *ngIf="aadhar.invalid">Enter Valid Aadhar Card</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+     <input matInput type="date" placeholder="Date of Birth:"
+     [ngModel]="date | date:'yyyy-MM-dd'" [max]="date | date:'yyyy-MM-dd'" (ngModelChange)="date = $event"   #dob="ngModel" id="dob" name="dob" ngModel required>
+     <mat-error *ngIf="dob.invalid">Enter Valid Date of Birth</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Vehicle Number:" #vehicleNo="ngModel" name="vehicleNo" ngModel required>
+      <mat-error *ngIf="vehicleNo.invalid">Enter Valid Vehicle Number</mat-error>
+     </mat-form-field>
+     <mat-form-field>
+      <input matInput type="number" placeholder="Salary:" #salary="ngModel" name="salary" ngModel required>
+      <mat-error *ngIf="salary.invalid">Enter Valid Salary</mat-error>
+     </mat-form-field>
+    <hr>
+      <button mat-raised-button color="primary" id="submit" type="submit">Submit</button>
+   </form>
+  </mat-card-content>
+</mat-card>
+
